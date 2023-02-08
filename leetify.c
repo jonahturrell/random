@@ -1,3 +1,5 @@
+/*  This program converts an input text file to leetspeak, and outputs it to leetified.txt  */
+
 #include <stdio.h>
 #include <stdlib.h>
 
