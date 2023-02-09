@@ -6,9 +6,11 @@
 int main(int argc, char **argv) {
 
   FILE *file_to_read = fopen(argv[1], "r");
-  FILE *file_to_write = fopen("leetified.txt", "w");
 
-  if (file_to_read == NULL || file_to_write == NULL) printf("Error opening files");
+  if (file_to_read == NULL) {
+    printf("Error opening files");
+    return -1;
+  }
   char c;
   while ((c = fgetc(file_to_read)) != EOF) {
     switch(c) {
@@ -35,11 +37,10 @@ int main(int argc, char **argv) {
         break;
     }
 
-    fputc(c, file_to_write);
+    putchar(c);
   }
 
   fclose(file_to_read);
-  fclose(file_to_write);
 
   return EXIT_SUCCESS;
 }
